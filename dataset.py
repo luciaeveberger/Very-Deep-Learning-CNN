@@ -2,8 +2,11 @@ import torch
 import torchvision
 import sys
 from transform import transform_training, transform_testing
+import torchvision.datasets as datasets
 import config as cf
-
+import os
+data_path = './data'
+import torchvision.transforms as transforms
 def dataset(dataset_name):
 
     if (dataset_name == 'cifar10'):
@@ -28,7 +31,12 @@ def dataset(dataset_name):
         testset = torchvision.datasets.MNIST(root='./data', train=False, download=False, transform=transform_testing())
         outputs = 10
         inputs = 1
-    
+    elif(dataset_name  == 'dog-breed'):
+         print("| Preparing dog-breed dataset...")
+         trainset = datasets.ImageFolder(os.path.join(data_path, 'train'),transform_training())
+         testset = datasets.ImageFolder(os.path.join(data_path, 'test'),transform=transform_testing())                  
+         outputs = 16
+         inputs = 3
     elif (dataset_name == 'fashionmnist'):
         print("| Preparing FASHIONMNIST dataset...")
         sys.stdout.write("| ")
@@ -46,6 +54,6 @@ def dataset(dataset_name):
     
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=cf.batch_size, shuffle=True, num_workers=4)
     testloader = torch.utils.data.DataLoader(testset, batch_size=cf.batch_size, shuffle=False, num_workers=4)
-    
+
     return trainloader, testloader, outputs, inputs
 
