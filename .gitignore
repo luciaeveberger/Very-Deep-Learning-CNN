@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 data/
 .idea
 # Byte-compiled / optimized / DLL files
@@ -115,3 +116,14 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+=======
+.pydevproject
+*.jpg
+data
+AlexNet.cpython-36.pyc
+*.zip
+*.csv
+CNN-checkpoint.ipynb
+kaggle.json
+kernel-checkpoint.ipynb
+>>>>>>> commit
