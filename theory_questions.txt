@@ -9,4 +9,10 @@ To elevate the underfitting, it would be best to make our model more complex.
 
 Reference:
 (https://www.youtube.com/watch?v=0h8lAm5Ki5g)
+
 Overfitting:
+Model performs well on the training set but not well on the test set. It is said to have 'over-fit' the data in the training.
+
+
+Reference:
+(https://www.youtube.com/watch?v=DEMmkFC6IGM)
