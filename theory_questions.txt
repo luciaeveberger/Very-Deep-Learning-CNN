@@ -1,5 +1,12 @@
 Undertting:
+In our AlexNet, there are a  lots of parameters to tune and very small solution space. Underfitting occurs when its not able to classify data its already been trained on. It is possible in this case that added so many Augmentations to the training set.
+This made the training metrics lower. Since it is already performing poorly with the training data, it does not improve on the testing data.
 
+To elevate the underfitting, it would be best to make our model more complex.
+1. Add more layers to the AlexNet
+2. Add more labels to the data (better classification)
+3. Reduce dropout on the AlexNet: decrease the dropout rate (maybe below 50%).
 
-
+Reference:
+(https://www.youtube.com/watch?v=0h8lAm5Ki5g)
 Overfitting:
