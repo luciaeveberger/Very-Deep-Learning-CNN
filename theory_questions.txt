@@ -2,31 +2,43 @@ Theory Questions
 Team: Very Deep Learners
 November 24, 2018
 
-Problem 2.4. Undertting:
+Problem 2.4. Underfitting:
 In our AlexNet, there are a lot of parameters to tune and very small solution space.
-Undertting occurs when it is not able to classify data it has already been trained on. It is
+Our underfitting occurs when it is not able to classify data it has already been trained on. It is
 possible in this case that added so many Augmentations to the training set. This made the
 training metrics lower. Since it is already performing poorly with the training data, it does
 not improve on the testing data.
-To elevate the undertting, it would be best to make our model more complex. Some
+To elevate the underfitting, it would be best to make our model more complex. Some
 techniques for us would be:
- Add more layers to the AlexNet
- Add more labels to the data (better classication)
- Reduce dropout on the AlexNet: decrease the dropout rate (maybe below 50 percent).
+    Add more layers to the AlexNet
+    Add more labels to the data (better classication)
+    Reduce dropout on the AlexNet: decrease the dropout rate (maybe below 50 percent).
 
-Problem 2.5 Overtting:
+____________________
+
+
+Problem 2.5 Overfitting:
 Overfitting occurs when the AlexNet Model with the ResNet performs well on the training
-set but poorly on the test set. It is said to have 'overfit' the data in the training. If our
-validation metrics on the training set are good, but the validation metrics on testing are not,
-it is overfit. The reason behind this may be a lack of adequate data (augmented, diversity,
-robustness).
-To elevate the overtting
- Add more data (more training data)
- Add more diverse data (needs to see more types, more breeds)
- Data Augmentation (adding more augmentations from the type): reasonably modied
- Reduce complexity (reduce layers, reduce neurons)
- Add Dropout rate (maybe above 50 percent)
+set but poorly on the test set. It is said to have 'overfit' the data in the training. That is our
+validation metrics on the training set are good, but the validation metrics on testing are not. 
+
+The reason behind this may be a lack of adequate data (augmented, diversity,
+robustness) and lack of regularization and batch norm.
+To elevate the overfitting
+    +Add more data (more training data)
+    +Add more diverse data (needs to see more types, more breeds)
+    +Data Augmentation (adding more augmentations from the type): reasonably augmented
+    -Reduce complexity (reduce layers, reduce neurons)
+    +Add Dropout rate 
+    +Regularization (below)
+    +Batch norm
+
+Regularization adds the penalty as model complexity increases, weighing 'complexity' or 'outlier' values. It decreases the relative importance of terms and will bring the model towards less complex equation
+
+
+The results are similar because the transfer learning techniques do not address the overfitting problem thus do not present a working solution. The results (95% accuracy) were very similar for both cases. The fundamental problem may be with the dataset and overall model (as mentioned above) rather than ImageNet vs AlexNet.
+
 
 References:
-https://www.youtube.com/watch?v=0h8lAm5Ki5g) (https://www.youtube.com/watch?v=DEMmkFC6IGM)
-1
+https://www.youtube.com/watch?v=0h8lAm5Ki5g) (https://www.youtube.com/watch?v=DEMmkFC6IGM
+https://towardsdatascience.com/over-fitting-and-regularization-64d16100f45c
