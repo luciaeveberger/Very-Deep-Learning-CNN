@@ -73,9 +73,11 @@ def dataset(dataset_name):
         testset = torchvision.datasets.STL10(root='./data',  split='test', download=False, transform=transform_testing())
         outputs = 10
         inputs = 3
-    trainloader, validateloader = splitTrainAndValidate(trainset)
-#     trainloader = torch.utils.data.DataLoader(trainset, batch_size=cf.batch_size, shuffle=True, num_workers=4)
-    testloader = torch.utils.data.DataLoader(testset, batch_size=cf.batch_size, shuffle=False, num_workers=4)
-    
-    return  trainloader, validateloader,testloader, outputs, inputs
-
+    if(dataset_name  == 'dog-breed'):
+        trainloader, validateloader = splitTrainAndValidate(trainset)      
+        testloader = torch.utils.data.DataLoader(testset, batch_size=cf.batch_size, shuffle=False, num_workers=4)
+        return  trainloader, validateloader,testloader, outputs, inputs
+    else:
+        trainloader = torch.utils.data.DataLoader(trainset, batch_size=cf.batch_size, shuffle=True, num_workers=4)
+        testloader = torch.utils.data.DataLoader(testset, batch_size=cf.batch_size, shuffle=False, num_workers=4)
+        return  trainloader,testloader, outputs, inputs
