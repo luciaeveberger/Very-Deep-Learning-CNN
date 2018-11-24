@@ -36,7 +36,7 @@ def train(epoch, net, trainloader, criterion):
     print ('| Epoch [%3d/%3d] \t\tLoss: %.4f Acc@1: %.3f%%'
                 %(epoch, cf.num_epochs, loss.data[0], 100.*correct/total))
 
-    return train_loss_stacked
+    return train_loss_stacked, predicted
 
 
 def test(epoch, net, testloader, criterion):
@@ -71,7 +71,7 @@ def test(epoch, net, testloader, criterion):
         best_acc = acc
     print('* Test results : Acc@1 = %.2f%%' % (best_acc))
 
-    return test_loss_stacked
+    return test_loss_stacked, predicted
 
 def start_train_test(net,trainloader, testloader, criterion):
     elapsed_time = 0
@@ -79,14 +79,14 @@ def start_train_test(net,trainloader, testloader, criterion):
     for epoch in range(cf.start_epoch, cf.start_epoch + cf.num_epochs):
         start_time = time.time()
 
-        train_loss = train(epoch, net, trainloader, criterion)
-        test_loss = test(epoch, net, testloader, criterion)
+        train_loss, train_predicted = train(epoch, net, trainloader, criterion)
+        test_loss, test_prodicted = test(epoch, net, testloader, criterion)
 
         epoch_time = time.time() - start_time
         elapsed_time += epoch_time
         print('| Elapsed time : %d:%02d:%02d' % (get_hms(elapsed_time)))
 
-    return train_loss.tolist(), test_loss.tolist()
+    return train_loss.tolist(), train_predicted.tolist(), test_loss.tolist(), test_prodicted.tolist()
 
 def get_hms(seconds):
     m, s = divmod(seconds, 60)
